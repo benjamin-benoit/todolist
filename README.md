@@ -1,6 +1,8 @@
-# todolist
 
-installer les dépendances:
-npm install
-lancer le projet:
-npm start
+# Todolist
+
+- Installer les dépendances:
+  - npm install
+
+- Lancer le projet:
+  - npm run start

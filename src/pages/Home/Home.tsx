@@ -8,18 +8,17 @@ import Task from "../../common/components/Task";
 import * as S from "./layout";
 
 const Home = () => {
-  const [tasks, setTasks] = useState<TaskData[]>();
-
-  const { isLoading } = useQuery("getTasks", async () => {
-    const data = await todoService.getTasks();
-    setTasks(data.data);
+  const { data, isLoading } = useQuery("getTasks", async () => {
+    return await todoService.getTasks();
   });
 
   return (
     <S.Container>
       <Panel />
       <Header />
-      {!isLoading ? tasks?.map((task: TaskData) => <Task task={task} />) : null}
+      {!isLoading && data
+        ? data?.data?.map((task: TaskData) => <Task task={task} />)
+        : null}
     </S.Container>
   );
 };
